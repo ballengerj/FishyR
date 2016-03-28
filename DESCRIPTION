@@ -1,0 +1,28 @@
+Package: FishyR
+Version: 0.0.0.9000
+Date: 2016-03-24
+Type: Package
+Title: Functions to Facilitate Standard Analyses Conducted in Fisheries Science
+Authors@R: person("Joseph C.", "Ballenger", email = "ballengerj@dnr.sc.gov",
+    role = c("aut", "cre"))
+Description: This package contains a set of functions to make the life of the
+    average fisheries scientist easier. Most of these functions were initially
+    developed to assist in the life history and relative abundance calculation of
+    snapper-grouper species collected via the Southeast Reef Fish Survey.
+Depends:
+    R (>= 3.2.3)
+Imports:
+    data.table (>= 1.9.6),
+    zoo (>= 1.7-12),
+    latticeExtra (>= 0.6-28),
+    lattice (>= 0.20-33),
+Suggests:
+    knitr (>= 1.12.3),
+    rmarkdown (>= 0.9.5),
+    scales (>= 0.4.0)
+License: GPL (>= 3)
+URL: http://github.com/ballengerj/Fishy
+BugReports: http://github.com/ballengerj/Fishy/issues
+LazyData: TRUE
+RoxygenNote: 5.0.1
+VignetteBuilder: knitr
