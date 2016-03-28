@@ -21,8 +21,8 @@ Suggests:
     rmarkdown (>= 0.9.5),
     scales (>= 0.4.0)
 License: GPL (>= 3)
-URL: http://github.com/ballengerj/Fishy
-BugReports: http://github.com/ballengerj/Fishy/issues
+URL: http://github.com/ballengerj/FishyR
+BugReports: http://github.com/ballengerj/FishyR/issues
 LazyData: TRUE
 RoxygenNote: 5.0.1
 VignetteBuilder: knitr
