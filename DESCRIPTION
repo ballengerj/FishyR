@@ -12,10 +12,18 @@ Description: This package contains a set of functions to make the life of the
 Depends:
     R (>= 3.2.3)
 Imports:
+    ape (>= 3.4),
     data.table (>= 1.9.6),
-    zoo (>= 1.7-12),
-    latticeExtra (>= 0.6-28),
+    ggplot2 (>= 2.0.0),
+    gstat (>= 1.1-3),
     lattice (>= 0.20-33),
+    latticeExtra (>= 0.6-28),
+    MASS (>= 7.3-45),
+    MuMIn (>= 1.15.6),
+    pscl (>= 1.4.9),
+    reshape (>= 0.8.5),
+    sp (>= 1.2-2),
+    zoo (>= 1.7-12),
 Suggests:
     knitr (>= 1.12.3),
     rmarkdown (>= 0.9.5),
