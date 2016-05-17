@@ -400,7 +400,7 @@ Model.Formulas <- function(Predictors, Response, model, offset = NULL, VarType,
 #' @export
 GLM.Select <- function(formula, data, family) {
     if(family == "nb") {
-        tmp <- try(MASS::glm.nb(as.formula(formula[2]), data = data))
+        tmp <- try(MASS::glm.nb(as.formula(formula), data = data))
         w <- ifelse(class(try(AIC(tmp))) == "numeric", AIC(tmp), NA)
         y <- ifelse(class(try(MuMIn::AICc(tmp))) == "numeric",
                     MuMIn::AICc(tmp),
@@ -411,8 +411,8 @@ GLM.Select <- function(formula, data, family) {
                        NA)
         c(w, y, z, Disp)
     } else {
-        tmp <- try(glm(as.formula(formula[2]), data = data,
-                       family = as.symbol(family)))
+        tmp <- try(glm(as.formula(formula), data = data,
+                       family = family))
         w <- ifelse(class(try(AIC(tmp))) == "numeric", AIC(tmp), NA)
         y <- ifelse(class(try(MuMIn::AICc(tmp))) == "numeric",
                     MuMIn::AICc(tmp),
