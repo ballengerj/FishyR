@@ -631,5 +631,4 @@ plot.bias <- function(bias.out, type) {
              ylab = 'Cumulative probability', ylim = c(0, 1), yaxs = 'i')
         abline(v = bias.out$bias.conf.int, lty = 2)
     }
-    invisible()
 }
