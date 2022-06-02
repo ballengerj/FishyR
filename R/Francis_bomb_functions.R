@@ -494,7 +494,7 @@ get.h.from.bias <- function(ref, test, hdist, bias.step = 5, bias.range = NULL,
 #' @param nsim number of simulated data sets used in generating the
 #'    distribution of h values
 #' @param plot.type type of plot to produce (if 0, no plot is made).  See
-#'    function \code{\link[FishyR]{plot.bias}} for available plot types
+#'    function \code{\link[FishyR]{bias.plot.BR}} for available plot types
 #' @param age,age.err,s.age,cy,x,y,y.err Character strings representing the
 #'    column names for each of the required elements (see above) in the ref and
 #'    test data frames.
@@ -561,7 +561,7 @@ calc.bias <- function(ref, test, nsim = 5000, plot.type = 0, x, y, age, cy,
                            s.age = s.age, test.x = x, test.y = y)
     bias.out <- list(hdist = hdist, h.conf.int = h.conf.int,
                      hval = tmp$hval, bias.conf.int = tmp$bias.conf.int)
-    #plot.bias(bias.out, plot.type)
+    bias.plot.BR(bias.out, plot.type)
     bias.out
 }
 
@@ -578,7 +578,7 @@ calc.bias <- function(ref, test, nsim = 5000, plot.type = 0, x, y, age, cy,
 #-------------------------------------------------------------------------------
 #' Bomb Radiocarbon Plots
 #'
-#' \code{plot.bias} plots output from function \code{\link[FishyR]{calc.bias}}
+#' \code{bias.plot.BR} plots output from function \code{\link[FishyR]{calc.bias}}
 #' @param bias.out list containing output from function
 #'    \code{\link[FishyR]{calc.bias}}
 #' @param type type of plot
@@ -603,11 +603,11 @@ calc.bias <- function(ref, test, nsim = 5000, plot.type = 0, x, y, age, cy,
 #'   x = "C14year", y = "C14", age = "age", cy = "catch.year",
 #'   age.err = "age.err", s.age = "samp.age", y.err = "C14.err",
 #'   bias.range = c(-50, 50), bias.step = 1)
-#' #plot.bias(out, type = 1)
-#' #plot.bias(out, type = 2)
+#' bias.plot.BR(out, type = 1)
+#' bias.plot.BR(out, type = 2)
 #' @family Bomb Radiocarbon Analyses
 #' @export
-plot.bias <- function(bias.out, type) {
+bias.plot.BR <- function(bias.out, type) {
     hval <- bias.out$hval
     nbias <- length(hval)
     hdist <- bias.out$hdist
