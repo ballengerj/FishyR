@@ -658,3 +658,24 @@ Index.Grid <- function(X, X.type, X.name, covariates, type, bin.length=17,
     tmp <- expand.grid(tmp.list)
     return(tmp)
 }
+
+#-------------------------------------------------------------------------------
+#' Calculate the dispersion estimate from a GLM model
+#' \code{disp}
+#' @param mod Name of a fitted model of various types from which Pearson
+#'   residuals and a residual degrees of freedom can be extracted from the
+#'   model object
+#' @family Model Evaluation
+#' @examples
+#' X <- seq(1, 100)
+#' Y <- 100 + 0.2 * X + rnorm(1, mean = 0, sd = 5)
+#' mod <- glm(Y ~ X)
+#' disp(mod) # Dispersion parameter estimated using functio
+#' sigma(mod)^2 # Dispersion parameter estimated using the calculated sigma
+#' # paramter of the model object
+#' @export
+disp = function(mod = NA){
+    E = residuals(mod, type='pearson')
+    d = sum(E^2)/mod$df.resid
+    return(d)
+}
