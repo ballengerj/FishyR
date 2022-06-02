@@ -561,7 +561,7 @@ calc.bias <- function(ref, test, nsim = 5000, plot.type = 0, x, y, age, cy,
                            s.age = s.age, test.x = x, test.y = y)
     bias.out <- list(hdist = hdist, h.conf.int = h.conf.int,
                      hval = tmp$hval, bias.conf.int = tmp$bias.conf.int)
-    plot.bias(bias.out, plot.type)
+    #plot.bias(bias.out, plot.type)
     bias.out
 }
 
@@ -576,9 +576,9 @@ calc.bias <- function(ref, test, nsim = 5000, plot.type = 0, x, y, age, cy,
 
 
 #-------------------------------------------------------------------------------
-#' Bomb Radiocarbobn Plots
+#' Bomb Radiocarbon Plots
 #'
-#' \code{plot.bias} plots outpout from function \code{\link[FishyR]{calc.bias}}
+#' \code{plot.bias} plots output from function \code{\link[FishyR]{calc.bias}}
 #' @param bias.out list containing output from function
 #'    \code{\link[FishyR]{calc.bias}}
 #' @param type type of plot
