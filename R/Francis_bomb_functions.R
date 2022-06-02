@@ -603,8 +603,8 @@ calc.bias <- function(ref, test, nsim = 5000, plot.type = 0, x, y, age, cy,
 #'   x = "C14year", y = "C14", age = "age", cy = "catch.year",
 #'   age.err = "age.err", s.age = "samp.age", y.err = "C14.err",
 #'   bias.range = c(-50, 50), bias.step = 1)
-#' plot.bias(out, type = 1)
-#' plot.bias(out, type = 2)
+#' #plot.bias(out, type = 1)
+#' #plot.bias(out, type = 2)
 #' @family Bomb Radiocarbon Analyses
 #' @export
 plot.bias <- function(bias.out, type) {
