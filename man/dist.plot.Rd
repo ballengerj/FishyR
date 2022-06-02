@@ -45,6 +45,7 @@ dist.plot(R1 = RedPorgy$R3.Age, R2 = RedPorgy$R4.Age, R1.label = "Reader 3",
    R2.label = "Reader 4")
 }
 \seealso{
-Other Bias Plot Functions: \code{\link{bias.plot}}
+Other Bias Plot Functions: 
+\code{\link{bias.plot}()}
 }
-
+\concept{Bias Plot Functions}

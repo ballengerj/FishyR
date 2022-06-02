@@ -29,4 +29,3 @@ Object of class \code{\link{data.frame}} containing the results of
 data(RedPorgy)
 symmetry(na.exclude(RedPorgy[, c(1, 2)]))
 }
-

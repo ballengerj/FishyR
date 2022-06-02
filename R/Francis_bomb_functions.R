@@ -46,7 +46,7 @@ get.nearest <- function(line, x, y) {
 #'    if multiple \code{y} values are present for a given \code{x}. If there
 #'    are, it determines the \code{\link{mean}} \code{y} for each variable of
 #'    \code{x}" before using the function \code{\link{isoreg}} to compute the
-#'    isotonic (montonely increasing nonparametric) least squares regression
+#'    isotonic (monotonely increasing nonparametric) least squares regression
 #'    which is piecewise constant that  bests fits the data.
 #' @param x numeric vector representing the \code{x}-coordinates of the
 #'    regression points.
@@ -58,7 +58,7 @@ get.nearest <- function(line, x, y) {
 #'    \describe{
 #'      \item{x}{original (constructed) abscissa values \code{x}, sorted in
 #'          ascending order}
-#'      \item{y}{fitted vlaues correspondinb to \code{ordered x} values}
+#'      \item{y}{fitted values corresponding to \code{ordered x} values}
 #'      }
 #' @examples
 #' set.seed(1234)
@@ -88,8 +88,8 @@ get.ref.line <- function(x, y) {
 #'    undefined).
 #' @param line a list, with components x and y (each an n-vector),
 #'    containing the series of n points defining the line
-#' @param test dataframe representing test data set as descrivbed in fucntion
-#'    \code{\link[FishyR]{calc.bombcarbon.bias}}
+#' @param test dataframe representing test data set as described in function
+#'    \code{\link[FishyR]{calc.bias}}
 #' @param age.err,test.x,test.y character strings representing the names of the
 #'    columns in \code{test} containing the aging error estimates, the
 #'    x-variable, and the y-variable, respectively.
@@ -140,7 +140,7 @@ calc.h <-
 #'    aging error provided in the \code{samp} data set.
 #' @param y.err character string giving the name of the column representing
 #'    the y-variable error provided in the \code{samp} data set.
-#' @param plot logical indicating whether to generate plot
+#' @param plotit logical indicating whether to generate plot
 #' @param incl.dist logical indicating whether to include distance calculations
 #'    in resultant output
 #' @return A dataframe with components (each with length nrow(samp)) with
@@ -264,6 +264,13 @@ closest.pt <- function(ref, samp, ref.x = "x", ref.y = "y",
 #'         h-statistic given above the panel.  (Note - use of this option is
 #'         not sensible when nsim is 'large')}
 #'      }
+#' @param age TBD
+#' @param age.err TBD
+#' @param cy TBD
+#' @param y TBD
+#' @param y.err TBD
+#' @param s.age TBD
+#' @param b.yr TBD
 #' @return A dataframe with components (each with length nrow(samp)) with
 #'    components X, Y - x & y coordinates of closest points - and optionally
 #'    (if incl.dist = TRUE) dist - signed distance from reference curve.
@@ -383,7 +390,7 @@ sim.hdist <- function(ref, test, nsim = 5000, diag = 0, age = "age",
 #'    bias, returning a list with components \code{hval} and
 #'    \code{bias.conf.int}
 #' @param ref,test dataframes representing reference and test data sets,
-#'    respectively, as descrivbed in fucntion \code{\link[FishyR]{calc.bias}}
+#'    respectively, as described in function \code{\link[FishyR]{calc.bias}}
 #' @param hdist simulated set of h values as generaed by function
 #'    \code{\link[FishyR]{sim.hdist}}
 #' @param bias.step,bias.range the function calculates \code{h} for each value
@@ -503,11 +510,11 @@ get.h.from.bias <- function(ref, test, hdist, bias.step = 5, bias.range = NULL,
 #' @return A named list of length 4 with the following elements:
 #'    \describe{
 #'      \item{hdist}{obersved h-statistic value for each of the simulations}
-#'      \item{h.conf.int}{estimated 95% confidence interval for the h-statistic
+#'      \item{h.conf.int}{estimated 95\% confidence interval for the h-statistic
 #'         based on the simulations}
 #'      \item{hval}{observed h-statistic at bias levels defined by the range of
 #'         biases considered}
-#'      \item{bias.conf.int}{95% confidence interval about aging bias}
+#'      \item{bias.conf.int}{95\% confidence interval about aging bias}
 #'      }
 #' @examples
 #' data(snapper)
@@ -581,14 +588,14 @@ calc.bias <- function(ref, test, nsim = 5000, plot.type = 0, x, y, age, cy,
 #' \code{bias.plot.BR} plots output from function \code{\link[FishyR]{calc.bias}}
 #' @param bias.out list containing output from function
 #'    \code{\link[FishyR]{calc.bias}}
-#' @param type type of plot
+#' @param plottype integer, with possible values of 1 and 2 that controls what,
+#'    type of plots is plotted:
 #'    \describe{
-#'      \item{0}{no plot}
 #'      \item{1}{the simulated h distribution is plotted, along with arrows
 #'         showing the h values for different values of percentage bias and
-#'         broken lines showing the 95% confidence interval for h}
+#'         broken lines showing the 95\% confidence interval for h}
 #'      \item{2}{a cumulative distribution of percentage bias is plotted, with
-#'         broken lines showing the 95% confidence interval for bias}
+#'         broken lines showing the 95\% confidence interval for bias}
 #'      }
 #' @return A plot.
 #' @examples
@@ -603,17 +610,17 @@ calc.bias <- function(ref, test, nsim = 5000, plot.type = 0, x, y, age, cy,
 #'   x = "C14year", y = "C14", age = "age", cy = "catch.year",
 #'   age.err = "age.err", s.age = "samp.age", y.err = "C14.err",
 #'   bias.range = c(-50, 50), bias.step = 1)
-#' bias.plot.BR(out, type = 1)
-#' bias.plot.BR(out, type = 2)
+#' bias.plot.BR(out, plottype = 1)
+#' bias.plot.BR(out, plottype = 2)
 #' @family Bomb Radiocarbon Analyses
 #' @export
-bias.plot.BR <- function(bias.out, type) {
+bias.plot.BR <- function(bias.out, plottype) {
     hval <- bias.out$hval
     nbias <- length(hval)
     hdist <- bias.out$hdist
     biaslab <- names(hval)
     biasval <- as.numeric(biaslab)
-    if(type == 1){
+    if(plottype == 1){
         hdist.line <- density(hdist)
         ymax <- 1.05 * max(hdist.line$y)
         par(mar = c(3, 3, 1, 1) + .1, mgp = c(2, 0.5, 0), las = 1)
@@ -623,7 +630,7 @@ bias.plot.BR <- function(bias.out, type) {
         text(hval, rep(0.5 * ymax, nbias), biaslab, srt = 90, adj = 0)
         abline(v = bias.out$h.conf.int, lty = 2)
     }
-    else if(type==2){
+    else if(plottype==2){
         pval <- rep(0, nbias)
         for(i in 1:nbias)pval[i] <- mean(hdist <= hval[i])
         par(mar = c(3, 3, 1, 1) + .1, mgp = c(2, 0.5, 0), las = 1)

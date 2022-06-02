@@ -3,10 +3,10 @@
 #' \code{Boot.Diag} generates a data frame containing summary statistics for
 #'   various number of bootstrap runs.  Intent is to inform when uncertainty
 #'   estimates of a relative abundance index stabilize.
-#' @param Rows
-#' @param Columns
-#' @param By
-#' @param Statistics
+#' @param Rows TBD
+#' @param Columns TBD
+#' @param By TBD
+#' @param Statistics TBD
 #' @return Data frame with five columns:
 #'   \describe{
 #'     \item{Group}{}
@@ -31,9 +31,9 @@ Boot.Diag <- function(Rows, Columns, By, Statistics=c("CV","Var")) {
 #'
 #' \code{Stat.Calc} calculates statistics (i.e., variance and cv estimates)
 #'   about a relative abundance index from a bootstrap analysis.
-#' @param X
-#' @param data
-#' @param index
+#' @param X TBD
+#' @param data TBD
+#' @param index TBD
 #' @return numeric vector with four points:
 #'   \describe{
 #'     \item{Points}{}
@@ -63,7 +63,7 @@ Stat.Calc <- function(X, data, index) {
 #'   relative abundance index for each bootstrap iteration
 #' @param data see \code{\link[boot]{boot}}
 #' @param i see \code{\link[boot]{boot}} for \code{stype}
-#' @param bestmod character vector represnting saved object representing the best
+#' @param bestmod character vector representing saved object representing the best
 #'   (i.e., final) model
 #' @param dist character vector used to specify the distribution to use in the
 #'   \code{\link[pscl]{zeroinfl}} function being implemented

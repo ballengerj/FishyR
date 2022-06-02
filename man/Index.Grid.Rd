@@ -5,8 +5,15 @@
 \title{Develop "grid" over which to predict CPUE from an index model based on
   covariate values}
 \usage{
-Index.Grid(X, X.type, X.name, covariates, type, bin.length = 17,
-  cont.length = 51)
+Index.Grid(
+  X,
+  X.type,
+  X.name,
+  covariates,
+  type,
+  bin.length = 17,
+  cont.length = 51
+)
 }
 \arguments{
 \item{X}{numeric vector representing the primary covariate of interest.  As
@@ -78,6 +85,8 @@ Index.Grid(X = X, X.type = "factor", X.name = "Year", covariates = df, type =
 rep("numeric", 3), bin.length = 3)
 }
 \seealso{
-Other Model Evaluation: \code{\link{Index.Summary}}
+Other Model Evaluation: 
+\code{\link{Index.Summary}()},
+\code{\link{disp}()}
 }
-
+\concept{Model Evaluation}

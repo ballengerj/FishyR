@@ -1,6 +1,6 @@
 Package: FishyR
-Version: 0.0.0.9000
-Date: 2016-03-24
+Version: 0.0.0.9001
+Date: 2022-06-02
 Type: Package
 Title: Functions to Facilitate Standard Analyses Conducted in Fisheries Science
 Authors@R: person("Joseph C.", "Ballenger", email = "ballengerj@dnr.sc.gov",
@@ -32,5 +32,5 @@ License: GPL (>= 3)
 URL: http://github.com/ballengerj/FishyR
 BugReports: http://github.com/ballengerj/FishyR/issues
 LazyData: TRUE
-RoxygenNote: 5.0.1
+RoxygenNote: 7.1.1
 VignetteBuilder: knitr

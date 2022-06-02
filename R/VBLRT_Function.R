@@ -4,14 +4,14 @@
 #'   looking at likelihood ratio tests to determine if there are differences
 #'   between defined groups.  Here we only allow for a single grouping variable
 #'   with two levels (i.e., sex (Male and Female)).
-#' @param len
-#' @param age
-#' @param group
-#' @param error
-#' @param select
-#' @param Linf
-#' @param k
-#' @param t0
+#' @param len Length data
+#' @param age Age data
+#' @param group Grouping Variable (only 2 groups allowed)
+#' @param error Error Type
+#' @param select TBD
+#' @param Linf Starting estimate for Linf
+#' @param k Starting estimate for k
+#' @param t0 Starting estimate for t0
 #' @return Individual von Bertalanffy growth function model fits, based on data
 #'   and specifications defined, along with results of likelihood ratio tests
 #'   and information criterion comparing the fits of the different models.
@@ -86,7 +86,7 @@ VBLRT <- function(len = NULL, age = NULL, group = NULL, error = 1, select = 1,
     # Constant variance for all lijs
     if (error == 1)
         x$wgt <- 1
-    # Constant variance for all mean leangths at age
+    # Constant variance for all mean lengths at age
     if (error == 2) {
         x <- with(x, aggregate(len ~ cat + age, FUN = mean))
         names(x) <- c("cat", "age", "len")
