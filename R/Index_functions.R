@@ -377,82 +377,7 @@ Model.Formulas <- function(Predictors, Response, model, offset = NULL, VarType,
         }
     }
 }
-#-------------------------------------------------------------------------------
-#' Perform Model Selection Using GLMs
-#'
-#' \code{GLM.Select} generates a vector that contains an \code{\link{AIC}}, an
-#'   \code{\link[MuMIn]{AICc}}, a \code{\link{BIC}}, and a dispersion parameter
-#'   estimate.  Intent is to use this function in a loop to extract model
-#'   information criterion for a range of model formulations, facilitating the
-#'   automated selection of *best* model.
-#' @param formula character string representing a potential model formula.
-#' @param data Data frame containing columns wiht names corresponding to the
-#'   values in the formula.
-#' @param family a description of the error distribution and link function to
-#'   be used in the model (see \code{\link{glm}} and \code{\link{family}}.
-#'   Outside of those values that can be used in \code{\link{glm}}, you can
-#'   also specify it as *nb*.  This tells the model to use the
-#'   \code{\link[MASS]{glm.nb}} function available in the package **MASS**.
-#' @return vector that contains the \code{\link{AIC}},
-#'   \code{\link[MuMIn]{AICc}}, \code{\link{BIC}} and dispersion parameter
-#'   estimate for a given model structure.
-#' @family Model Selection
-#' @export
-GLM.Select <- function(formula, data, family) {
-    if(family == "nb") {
-        tmp <- try(MASS::glm.nb(as.formula(formula), data = data))
-        w <- ifelse(class(try(AIC(tmp))) == "numeric", AIC(tmp), NA)
-        y <- ifelse(class(try(MuMIn::AICc(tmp))) == "numeric",
-                    MuMIn::AICc(tmp),
-                    NA)
-        z <- ifelse(class(try(BIC(tmp))) == "numeric", BIC(tmp), NA)
-        Disp <- ifelse(class(try(AIC(tmp))) == "numeric",
-                       sum(resid(tmp, type="pearson") ^ 2)/ tmp$df.resid,
-                       NA)
-        c(w, y, z, Disp)
-    } else {
-        tmp <- try(glm(as.formula(formula), data = data,
-                       family = family))
-        w <- ifelse(class(try(AIC(tmp))) == "numeric", AIC(tmp), NA)
-        y <- ifelse(class(try(MuMIn::AICc(tmp))) == "numeric",
-                    MuMIn::AICc(tmp),
-                    NA)
-        z <- ifelse(class(try(BIC(tmp))) == "numeric", BIC(tmp), NA)
-        Disp <- ifelse(class(try(AIC(tmp))) == "numeric",
-                       sum(resid(tmp, type = "pearson") ^ 2)/ tmp$df.resid,
-                       NA)
-        c(w, y, z, Disp)
-    }
-}
-#-------------------------------------------------------------------------------
-#' Perform Model Selection Using Zero-Inflated GLMs
-#'
-#' \code{ZI.Select} generates a vector that contains an \code{\link{AIC}}, an
-#'   \code{\link[MuMIn]{AICc}}, a \code{\link{BIC}}, and a dispersion parameter
-#'   estimate.  Intent is to use this function in a loop to extract model
-#'   information criterion for a range of model formulations, facilitating the
-#'   automated selection of *best* model.
-#' @param formula character string representing a potential model formula
-#' @param data data frame containing columns wiht names corresponding to the
-#'   values in the formula
-#' @param dist see help page for \code{\link[pscl]{zeroinfl}}
-#' @param link see help page for \code{\link[pscl]{zeroinfl}}
-#' @return vector that contains the \code{\link{AIC}},
-#'   \code{\link[MuMIn]{AICc}}, \code{\link{BIC}} and dispersion parameter
-#'   estimate for a given model structure
-#' @family Model Selection
-#' @export
-ZI.Select <- function(formula, data, dist, link) {
-    tmp <- try(pscl::zeroinfl(as.formula(formula), data = data,
-                              dist = dist, link = link))
-    w <- ifelse(class(try(AIC(tmp))) == "numeric", AIC(tmp), NA)
-    y <- ifelse(class(try(MuMIn::AICc(tmp))) == "numeric", MuMIn::AICc(tmp), NA)
-    z <- ifelse(class(try(AIC(tmp))) == "numeric", BIC(tmp), NA)
-    Disp <- ifelse(class(try(AIC(tmp))) == "numeric",
-                   sum(resid(tmp, type = "pearson") ^ 2)/ tmp$df.resid,
-                   NA)
-    c(w, y, z, Disp)
-}
+
 #-------------------------------------------------------------------------------
 #' Summarize results of a standardized relative abundance index
 #'
@@ -564,6 +489,7 @@ Index.Summary <- function(Y, X, grid, models,
     model.summary <- model.results.list
     Results <<- list(Models = model.results, Summary = model.summary)
 }
+
 #-------------------------------------------------------------------------------
 #' Develop "grid" over which to predict CPUE from an index model based on
 #'   covariate values

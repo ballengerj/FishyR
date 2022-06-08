@@ -572,16 +572,6 @@ calc.bias <- function(ref, test, nsim = 5000, plot.type = 0, x, y, age, cy,
     bias.out
 }
 
-
-
-
-
-
-
-
-
-
-
 #-------------------------------------------------------------------------------
 #' Bomb Radiocarbon Plots
 #'
