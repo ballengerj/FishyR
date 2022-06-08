@@ -1,8 +1,6 @@
 #' Red Drum catches from the South Carolina Department of Natural Resources
 #' Trammel Net Survey
 #'
-#' .
-#'
 #' @format A tibble with 20,366 rows and 15 variables:
 #' \describe{
 #'   \item{Collection}{Factor Collection identifier}
@@ -14,10 +12,10 @@
 #'   \item{Day}{dbl Day of collection}
 #'   \item{Date}{POSICct Date of collection}
 #'   \item{Site}{Factor Site of collection; \code{site} is nested within
-#'   \code{stratum} and \code{area}
+#'   \code{stratum} and \code{area}}
 #'   \item{Stratum}{Factor Stratum of collection with seven possible values:
 #'   Port Royal Sound, ACE Basin, Ashley River, Charleston Harbor, Wando River,
-#'   Cape Romain, and Winyah Bay. Stratum is nested within \code{Area} }
+#'   Cape Romain, and Winyah Bay. Stratum is nested within \code{Area}}
 #'   \item{Area}{Factor Area (Estuary) of collection with five possible
 #'   values: Port Royal Sound, ACE Basin, Charleston Harbor, Cape Romain and
 #'   Winyah Bay}
